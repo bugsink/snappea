@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+version_file = "snappea/scmversion.py"
+
+[project]
+name = "snappea"
+authors = [
+    {name = "Klaas van Schelven (Bugsink BV)", email = "klaas@vanschelven.com"},
+]
+description = "Dead simple background task runner for Django"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "BSD-3-Clause"}
+classifiers = [
+    "Framework :: Django",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+]
+dynamic = ["version"]
