@@ -8,7 +8,7 @@ version_file = "snappea/scmversion.py"
 [project]
 name = "snappea"
 authors = [
-    {name = "Klaas van Schelven (Bugsink BV)", email = "klaas@vanschelven.com"},
+    {name = "Klaas van Schelven (Bugsink BV)", email = "klaas@bugsink.com"},
 ]
 description = "Dead simple background task runner for Django"
 readme = "README.md"
