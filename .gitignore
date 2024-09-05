@@ -3,3 +3,25 @@ build
 dist
 *.egg-info
 snappea/scmversion.py
+
+# Python
+*.pyc
+__pycache__
+
+# Virtual Environments / build
+/.env
+/.venv
+/bin/
+/include/
+/lib/
+/lib64
+/pyvenv.cfg
+/share/
+/snappea.egg-info/
+/snappea/_version.py
+/dist/
+
+
+# vim
+*.swo
+*.swp
