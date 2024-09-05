@@ -1,7 +1,15 @@
 import logging
 import json
 
-from performance.context_managers import time_to_logger
+try:
+    # We haven't factored the performance context_managers out of Bugsink yet, so the dependency is optional.
+    from performance.context_managers import time_to_logger
+except ImportError:
+    import contextlib
+
+    # time_to_logger is a no-op context manager when the performance package is not available.
+    def time_to_logger(logger, message):
+        return contextlib.nullcontext()
 
 from . import registry
 from .models import Task, wakeup_server

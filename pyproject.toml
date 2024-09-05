@@ -18,10 +18,7 @@ classifiers = [
     "Framework :: Django",
     "Programming Language :: Python :: 3",
 ]
-dynamic = ["version"]
-
-dependencies = [
-]
+dynamic = ["version", "dependencies"]
 
 [tool.setuptools]
 include-package-data = true  # this is the default, but explicit is better than implicit

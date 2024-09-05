@@ -10,13 +10,31 @@ import time
 import signal
 import threading
 from inotify_simple import INotify, flags
-from sentry_sdk import capture_exception
+
+try:
+    # optional dependency: sentry_sdk. To send stuff to **Bugsink** (hopefully) when an exception occurs.
+    from sentry_sdk import capture_exception
+except ImportError:
+    def capture_exception(e):
+        pass
 
 from django.conf import settings
 from django.db import connections
 
-from performance.context_managers import time_to_logger
-from bugsink.transaction import durable_atomic
+try:
+    # We haven't factored the performance context_managers out of Bugsink yet, so the dependency is optional.
+    from performance.context_managers import time_to_logger
+except ImportError:
+    # time_to_logger is a no-op context manager when the performance package is not available.
+    def time_to_logger(logger, message):
+        return contextlib.nullcontext()
+
+try:
+    from bugsink.transaction import durable_atomic
+except ImportError:
+    # durable_atomic is a no-op context manager when it is not available. This means we lose some reliability, so I'd
+    # like to make it available ASAP
+    durable_atomic = contextlib.nullcontext
 
 from . import registry
 from .models import Task

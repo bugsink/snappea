@@ -31,4 +31,4 @@ jobs:
     - name: Run Tests
       run: |
         cd example_django_project
-        python manage.py test snappea
+        python -Wall manage.py test snappea
