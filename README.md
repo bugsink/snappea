@@ -48,9 +48,11 @@ Python [..] (main, [..]
 Type "help", "copyright", "credits" or "license" for more information.
 (InteractiveConsole)
 
->>> from snappea.example_tasks import *
->>> fast_task.delay()
+>>> from snappea.example_tasks import printing_task
+>>> printing_task.delay()
 ```
+
+You should now see text in your snappea console.
 
 ### Limitations
 
