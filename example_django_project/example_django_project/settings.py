@@ -79,8 +79,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    "snappea": {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'snappea.sqlite3',
+        # 'TEST': {  postponed, for starters we'll do something like SNAPPEA_ALWAYS_EAGER
+        'OPTIONS': {
+            'timeout': 5,
+        },
+    },
 }
+
+DATABASE_ROUTERS = ("snappea.dbrouters.SeparateSnappeaDBRouter",)
 
 
 # Password validation
