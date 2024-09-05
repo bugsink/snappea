@@ -34,7 +34,8 @@ try:
 except ImportError:
     # durable_atomic is a no-op context manager when it is not available. This means we lose some reliability, so I'd
     # like to make it available ASAP
-    durable_atomic = contextlib.nullcontext
+    def durable_atomic(*args, **kwargs):
+        return contextlib.nullcontext()
 
 from . import registry
 from .models import Task
