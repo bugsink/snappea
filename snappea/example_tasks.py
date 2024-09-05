@@ -23,3 +23,8 @@ def failing_task():
 @shared_task
 def fast_task():
     pass
+
+
+@shared_task
+def printing_task():
+    print("Printing something")

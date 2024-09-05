@@ -25,3 +25,7 @@ __pycache__
 # vim
 *.swo
 *.swp
+
+
+# sqlite
+/example_django_project/*sqlite3*
