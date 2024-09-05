@@ -1,3 +1,7 @@
+# Snappea
+
+![Logo](snappea-logo.png "Snappea Logo")
+
 A simple alternative for celery that doesn't require a broker.
 
 See https://www.bugsink.com/snappea-design/
@@ -49,3 +53,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> from snappea.example_tasks import *
 >>> fast_task.delay()
 ```
+
