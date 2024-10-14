@@ -8,7 +8,7 @@ version_file = "snappea/scmversion.py"
 [project]
 name = "snappea"
 authors = [
-    {name = "Klaas van Schelven (Bugsink BV)", email = "klaas@bugsink.com"},
+    {name = "Bugsink B.V.", email = "info@bugsink.com"},
 ]
 description = "MessageQueue-less task runner for Django"
 readme = "README.md"
@@ -19,6 +19,11 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dynamic = ["version", "dependencies"]
+
+[project.urls]
+repository = "https://github.com/bugsink/snappea/"
+documentation = "https://www.bugsink.com/blog/snappea-design/"
+issues = "https://github.com/bugsink/snappea/issues"
 
 [tool.setuptools]
 include-package-data = true  # this is the default, but explicit is better than implicit
