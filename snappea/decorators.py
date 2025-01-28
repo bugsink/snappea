@@ -14,6 +14,7 @@ except ImportError:
 from . import registry
 from .models import Task, wakeup_server
 from .settings import get_settings
+from .utils import add_task_kwargs
 
 performance_logger = logging.getLogger("bugsink.performance.snappea")
 
@@ -34,6 +35,7 @@ def shared_task(function):
             # No need for a transaction: we just write something (not connected to any other object, and we will never
             # touch it again). Counterpoint: if we'd have a transaction, we could distinguish between "wait for write
             # lock" and "actually write".
+            kwargs.update(add_task_kwargs())
             Task.objects.create(task_name=name, args=json.dumps(args), kwargs=json.dumps(kwargs))
 
             # not necessary: `connections["snappea"].close()`; Django does this at the end of the request and the
