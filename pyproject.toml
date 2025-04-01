@@ -12,7 +12,7 @@ authors = [
 ]
 description = "MessageQueue-less task runner for Django"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = "BSD-3-Clause"
 classifiers = [
     "Framework :: Django",
