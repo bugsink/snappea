@@ -1,3 +1,4 @@
+import contextlib
 from datetime import datetime, timezone, timedelta
 import threading
 import logging
@@ -6,11 +7,29 @@ import sentry_sdk
 from django.db import OperationalError
 from django.db.models import Count
 
-from sentry_sdk_extensions import capture_or_log_exception
-from bugsink.transaction import immediate_atomic
-from bugsink.timed_sqlite_backend.base import different_runtime_limit
-from performance.context_managers import time_to_logger
+try:
+    from bugsink.transaction import immediate_atomic
+except ImportError:
+    # immediate_atomic is a no-op context manager when it is not available. This means we lose some reliability, so I'd
+    # like to make it available ASAP
+    def immediate_atomic(*args, **kwargs):
+        return contextlib.nullcontext()
 
+
+try:
+    from bugsink.timed_sqlite_backend.base import different_runtime_limit
+except ImportError:
+    # different_runtime_limit is a no-op context manager when it is not available.
+    def different_runtime_limit(*args, **kwargs):
+        return contextlib.nullcontext()
+
+try:
+    from performance.context_managers import time_to_logger
+except ImportError:
+    def time_to_logger(logger, msg):
+        return contextlib.nullcontext()
+
+from .sentry_sdk_extensions import capture_or_log_exception
 from .models import Task, Stat
 from .settings import get_settings
 
